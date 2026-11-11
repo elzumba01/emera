@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 158 64% 4%;
+    --foreground: 150 30% 96%;
+    --card: 158 50% 7%;
+    --card-foreground: 150 30% 96%;
+    --popover: 158 50% 6%;
+    --popover-foreground: 150 30% 96%;
+    --primary: 152 76% 44%;
+    --primary-foreground: 158 64% 5%;
+    --secondary: 158 40% 12%;
+    --secondary-foreground: 150 30% 96%;
+    --muted: 158 30% 14%;
+    --muted-foreground: 150 12% 62%;
+    --accent: 45 65% 55%;
+    --accent-foreground: 158 64% 5%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 152 40% 18%;
+    --input: 152 40% 18%;
+    --ring: 152 76% 44%;
+    --radius: 0.875rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: rgba(16, 185, 129, 0.4);
+    color: #ecfdf5;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #04120c;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #0e5c3f, #0a3d2b);
+    border-radius: 8px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Cinzel', serif;
+  }
+  .text-gold-gradient {
+    background: linear-gradient(100deg, #f6e27a 0%, #d4af37 35%, #fff3c4 55%, #b8860b 80%, #f6e27a 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gold-shimmer 6s linear infinite;
+  }
+  .text-emerald-gradient {
+    background: linear-gradient(100deg, #6ee7b7 0%, #10b981 40%, #a7f3d0 60%, #059669 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gold-shimmer 7s linear infinite;
+  }
+  .glass-panel {
+    background: linear-gradient(145deg, rgba(10, 42, 30, 0.72), rgba(4, 18, 12, 0.85));
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+  }
+  .gold-border {
+    position: relative;
+  }
+  .gold-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(246, 226, 122, 0.7), rgba(212, 175, 55, 0.15) 40%, rgba(16, 185, 129, 0.5) 70%, rgba(246, 226, 122, 0.6));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .glow-emerald {
+    box-shadow: 0 0 24px rgba(16, 185, 129, 0.35), 0 0 80px rgba(16, 185, 129, 0.12);
+  }
+  .glow-gold {
+    box-shadow: 0 0 24px rgba(212, 175, 55, 0.3), 0 0 70px rgba(212, 175, 55, 0.1);
+  }
+}
+
+@keyframes gold-shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee-x 30s linear infinite;
+}
+
+.whatsapp-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: rgba(37, 211, 102, 0.55);
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  z-index: -1;
+}
